@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { FaFlag, FaUser } from 'react-icons/fa';
 
-const card = ({ player, setCoin, coin }) => {
+const card = ({ player, setCoin, coin, selectedPlayers, setSelectedPlayers }) => {
     const [isSelected, setIsSelected] = useState(false);
 
     const handleChoosePlayer = () => {
         let newCoin = coin - player.price
         if (newCoin >= 0) {
             setCoin(coin - player.price)
-            alert(`${player.playerName} is Selected`)
-            setIsSelected(true)
         } else {
             alert("Not Wnough Coin to Purchase This Player")
+            return;
         }
+        alert(`${player.playerName} is Selected`)
+        setIsSelected(true);
+        setSelectedPlayers([...selectedPlayers, player])
     }
 
     return (
@@ -20,6 +22,7 @@ const card = ({ player, setCoin, coin }) => {
             <div className="card bg-base-100 w-96 shadow-sm p-6">
                 <figure className='rounded-2xl pb-6'>
                     <img
+                        className='w-[376px] h-[240px]'
                         src={player.playerImage}
                         alt="Shoes" />
                 </figure>
