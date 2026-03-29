@@ -4,10 +4,10 @@ import dollerImg from "../../assets/Currency.png";
 
 const Navbar = () => {
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto mt-12'>
             <div className="navbar">
                 <div className="flex-1">
-                    <a className="btn btn-ghost text-xl"><img src={logoImg} alt="" srcset="" /></a>
+                    <a className=""><img src={logoImg} alt="" srcset="" /></a>
                 </div>
                 <div className="flex gap-12 items-center">
                     <ul className='flex gap-12'>
