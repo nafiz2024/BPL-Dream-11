@@ -1,5 +1,6 @@
 import React from 'react';
 import { RiDeleteBinLine } from "react-icons/ri";
+import { toast } from 'react-toastify';
 
 const SelectedPlayers = ({ selectedPlayers, setSelectedPlayers, coin, setCoin}) => {
 
@@ -10,11 +11,17 @@ const handleDeleteSelectedPlayer = (player) => {
 
     setSelectedPlayers(filteredPayers)
     setCoin(coin + player.price)
+    toast.warn(`${player.playerName} is Removed`)
 }
 
     return (
         <div className='space-y-6'>
-            {selectedPlayers.map((player, index) => {
+            {selectedPlayers.length === 0 ?
+            <div className="mx-auto text-center space-y-10 my-25 border border-[#131313]/10 p-10 rounded-3xl">
+                <h2 className='text-5xl'>No Players Selected Yet</h2>
+                <p className='text-2xl text-[#131313]/60'>Go To Available Tab To Select Players</p>
+            </div> 
+            : selectedPlayers.map((player, index) => {
                 return <div key={index}>
                     <div className="flex justify-between items-center p-6 border border-[#131313]/10 rounded-2xl">
                         <div className="flex items-center gap-6">
